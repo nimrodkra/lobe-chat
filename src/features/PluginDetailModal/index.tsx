@@ -1,35 +1,32 @@
-import { Avatar, Modal, TabsNav } from '@lobehub/ui';
-import { Divider, Typography } from 'antd';
-import { useTheme } from 'antd-style';
-import isEqual from 'fast-deep-equal';
+import { Modal, TabsNav } from '@lobehub/ui';
+import { Divider } from 'antd';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Center, Flexbox } from 'react-layout-kit';
+import { Center } from 'react-layout-kit';
 import useMergeState from 'use-merge-value';
 
 import MobilePadding from '@/components/MobilePadding';
 import PluginSettingsConfig from '@/features/PluginSettings';
-import { pluginHelpers, useToolStore } from '@/store/tool';
-import { pluginSelectors } from '@/store/tool/selectors';
+
+import APIs from './APIs';
+import Meta from './Meta';
 
 interface PluginDetailModalProps {
   id: string;
   onClose: () => void;
-  onTabChange: (key: string) => void;
+  onTabChange?: (key: string) => void;
   open?: boolean;
   schema: any;
-  tab: string;
+  tab?: string;
 }
 
 const PluginDetailModal = memo<PluginDetailModalProps>(
   ({ schema, onClose, id, onTabChange, open, tab }) => {
-    const pluginMeta = useToolStore(pluginSelectors.getPluginMetaById(id), isEqual);
     const [tabKey, setTabKey] = useMergeState('info', {
       onChange: onTabChange,
       value: tab,
     });
     const { t } = useTranslation('plugin');
-    const theme = useTheme();
 
     return (
       <Modal
@@ -41,21 +38,11 @@ const PluginDetailModal = memo<PluginDetailModalProps>(
         }}
         open={open}
         title={t('detailModal.title')}
-        width={600}
+        width={650}
       >
         <MobilePadding>
           <Center gap={16}>
-            <Avatar
-              avatar={pluginHelpers.getPluginAvatar(pluginMeta) || '⚙️'}
-              background={theme.colorFillContent}
-              gap={12}
-              size={64}
-            />
-
-            <Flexbox style={{ fontSize: 20 }}>{pluginHelpers.getPluginTitle(pluginMeta)}</Flexbox>
-            <Typography.Text type={'secondary'}>
-              {pluginHelpers.getPluginDesc(pluginMeta)}
-            </Typography.Text>
+            <Meta id={id} />
             <Divider style={{ marginBottom: 0, marginTop: 8 }} />
             <TabsNav
               activeKey={tabKey}
@@ -71,7 +58,11 @@ const PluginDetailModal = memo<PluginDetailModalProps>(
               ]}
               onChange={setTabKey}
             />
-            {schema && <PluginSettingsConfig id={id} schema={schema} />}
+            {tabKey === 'settings' ? (
+              schema && <PluginSettingsConfig id={id} schema={schema} />
+            ) : (
+              <APIs id={id} />
+            )}
           </Center>
         </MobilePadding>
       </Modal>

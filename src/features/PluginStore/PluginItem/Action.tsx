@@ -1,7 +1,7 @@
 import { ActionIcon, Icon } from '@lobehub/ui';
 import { Button, Dropdown, Popconfirm } from 'antd';
 import { useResponsive } from 'antd-style';
-import { InfoIcon, MoreVerticalIcon, Package2, Settings2, Trash2 } from 'lucide-react';
+import { InfoIcon, MoreVerticalIcon, Settings2, Trash2 } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
@@ -10,6 +10,8 @@ import PluginDetailModal from '@/features/PluginDetailModal';
 import { useToolStore } from '@/store/tool';
 import { pluginSelectors, pluginStoreSelectors } from '@/store/tool/selectors';
 import { LobeToolType } from '@/types/tool/tool';
+
+import EditCustomPlugin from './EditCustomPlugin';
 
 interface ActionsProps {
   identifier: string;
@@ -35,6 +37,7 @@ const Actions = memo<ActionsProps>(({ identifier, type }) => {
       <Flexbox align={'center'} horizontal>
         {installed ? (
           <>
+            {isCustomPlugin && <EditCustomPlugin identifier={identifier} />}
             {plugin?.settings && (
               <ActionIcon
                 icon={Settings2}
@@ -45,24 +48,6 @@ const Actions = memo<ActionsProps>(({ identifier, type }) => {
                 title={t('store.actions.settings')}
               />
             )}
-            {isCustomPlugin && (
-              <ActionIcon
-                icon={Package2}
-                onClick={() => {
-                  setOpen(true);
-                }}
-                title={t('store.actions.settings')}
-              />
-            )}
-            {/*<Button*/}
-            {/*  loading={installing}*/}
-            {/*  onClick={() => {*/}
-            {/*    setOpen(true);*/}
-            {/*  }}*/}
-            {/*  size={mobile ? 'small' : undefined}*/}
-            {/*>*/}
-            {/*  {t('store.actions.detail')}*/}
-            {/*</Button>*/}
             <Dropdown
               menu={{
                 items: [
@@ -79,7 +64,6 @@ const Actions = memo<ActionsProps>(({ identifier, type }) => {
                     danger: true,
                     icon: <Icon icon={Trash2} />,
                     key: 'uninstall',
-
                     label: (
                       <Popconfirm
                         arrow={false}
