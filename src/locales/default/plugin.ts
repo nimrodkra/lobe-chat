@@ -7,8 +7,12 @@ export default {
     response: '返回结果',
   },
   detailModal: {
+    info: {
+      description: 'API 描述',
+      name: 'API 名称',
+    },
     tabs: {
-      info: '详情',
+      info: '插件能力',
       manifest: '安装文件',
       settings: '设置',
     },
@@ -88,7 +92,10 @@ export default {
       manifest: '功能描述清单 (Manifest)',
       meta: '插件元信息',
     },
-    title: '添加自定义插件',
+    title: {
+      create: '添加自定义插件',
+      edit: '编辑自定义插件',
+    },
     type: {
       lobe: 'LobeChat 插件',
       openai: 'OpenAI 插件',
@@ -135,6 +142,7 @@ export default {
       confirmUninstall: '即将卸载该插件，卸载后将清除该插件配置，请确认你的操作',
       detail: '详情',
       install: '安装',
+      manifest: '编辑安装文件',
       settings: '设置',
       uninstall: '卸载',
     },

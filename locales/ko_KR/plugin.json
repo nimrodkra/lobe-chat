@@ -6,6 +6,18 @@
     "off": "디버그 끄기",
     "on": "플러그인 호출 정보 보기"
   },
+  "detailModal": {
+    "info": {
+      "description": "API 설명",
+      "name": "API 이름"
+    },
+    "tabs": {
+      "info": "플러그인 능력",
+      "manifest": "설치 파일",
+      "settings": "설정"
+    },
+    "title": "플러그인 상세정보"
+  },
   "dev": {
     "confirmDeleteDevPlugin": "로컬 플러그인을 삭제하시겠습니까? 삭제 후에는 복구할 수 없습니다.",
     "deleteSuccess": "플러그인이 성공적으로 삭제되었습니다.",
@@ -76,7 +88,6 @@
       "manifest": "기능 설명 목록 (Manifest)",
       "meta": "플러그인 메타 정보"
     },
-    "title": "사용자 정의 플러그인 추가",
     "update": "업데이트",
     "updateSuccess": "플러그인 설정이 성공적으로 업데이트되었습니다.",
     "modalDesc": "사용자 정의 플러그인을 추가하면 플러그인 개발을 검증하거나 세션에서 직접 사용할 수 있습니다. 플러그인 개발은 <1>개발 문서↗</>를 참조하세요.",
@@ -88,6 +99,10 @@
     "type": {
       "lobe": "LobeChat 플러그인",
       "openai": "OpenAI 플러그인"
+    },
+    "title": {
+      "create": "사용자 정의 플러그인 추가",
+      "edit": "사용자 정의 플러그인 편집"
     }
   },
   "error": {
@@ -136,6 +151,15 @@
     },
     "title": "플러그인 스토어",
     "uninstall": "제거",
-    "placeholder": "플러그인 이름 또는 키워드를 검색하세요..."
+    "placeholder": "플러그인 이름 또는 키워드를 검색하세요...",
+    "actions": {
+      "confirmUninstall": "이 플러그인을 제거하려고 합니다. 제거하면 플러그인 구성이 지워지므로 작업을 확인하세요.",
+      "detail": "상세정보",
+      "install": "설치",
+      "manifest": "설치 파일 편집",
+      "settings": "설정",
+      "uninstall": "제거"
+    },
+    "customPlugin": "사용자 정의 플러그인"
   }
 }

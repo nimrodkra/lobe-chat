@@ -6,6 +6,18 @@
     "off": "關閉偵錯",
     "on": "查看插件呼叫資訊"
   },
+  "detailModal": {
+    "info": {
+      "description": "API 描述",
+      "name": "API 名稱"
+    },
+    "tabs": {
+      "info": "插件能力",
+      "manifest": "安裝檔案",
+      "settings": "設定"
+    },
+    "title": "插件詳情"
+  },
   "dev": {
     "confirmDeleteDevPlugin": "您確定要刪除此本機外掛嗎？一旦刪除，將無法復原。",
     "deleteSuccess": "外掛已成功刪除",
@@ -77,7 +89,6 @@
       "manifest": "功能描述清單 (Manifest)",
       "meta": "外掛後設資料"
     },
-    "title": "新增自訂外掛",
     "update": "更新",
     "updateSuccess": "外掛設定已成功更新",
     "modalDesc": "添加自訂插件後，可用於插件開發驗證，也可直接在會話中使用。插件開發請參考<1>開發文件↗</>",
@@ -89,6 +100,10 @@
     "type": {
       "lobe": "LobeChat 插件",
       "openai": "OpenAI 插件"
+    },
+    "title": {
+      "create": "新增自訂插件",
+      "edit": "編輯自訂插件"
     }
   },
   "error": {
@@ -156,6 +171,15 @@
     },
     "title": "插件商店",
     "uninstall": "解除安裝",
-    "placeholder": "搜尋插件名稱介紹或關鍵字..."
+    "placeholder": "搜尋插件名稱介紹或關鍵字...",
+    "actions": {
+      "confirmUninstall": "即將卸載該插件，卸載後將清除該插件配置，請確認你的操作",
+      "detail": "詳情",
+      "install": "安裝",
+      "manifest": "編輯安裝檔案",
+      "settings": "設定",
+      "uninstall": "卸載"
+    },
+    "customPlugin": "自訂插件"
   }
 }
